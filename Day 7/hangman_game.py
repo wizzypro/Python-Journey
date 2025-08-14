@@ -8,10 +8,13 @@ for letter in range(random_word_length):
     placeholder += "_"
 print(f"Mystery Word: {placeholder}")
 
-
+game_over = False
 correct_letters = []
 
+
 def ask_user():
+
+    global game_over
     blank_random_word_list = ""
     user_guess = input("Guess a letter in the mystery word: \n").lower()
     for letter in random_word:
@@ -22,8 +25,17 @@ def ask_user():
             blank_random_word_list += letter
         else:
             blank_random_word_list += "_"
+    if "_" not in blank_random_word_list:
+        game_over = True
+        print("You Win!!")
     print(blank_random_word_list)
 
 
-while random_word_length != len(correct_letters):
+
+print(f"Game over value: {game_over}")
+
+while not game_over:
     ask_user()
+    # print(f"Game over value: {game_over}")
+
+
